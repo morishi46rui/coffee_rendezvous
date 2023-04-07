@@ -56,6 +56,7 @@ group :development, :test do
   gem 'rubocop-airbnb'
   gem 'pry-rails'
   gem 'rails-controller-testing'
+  gem 'dotenv-rails'
 end
 
 group :development do
