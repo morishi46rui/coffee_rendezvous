@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :shops
   devise_for :users
   resources :users, only: [:show]
   root 'homes#index'
