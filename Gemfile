@@ -82,3 +82,5 @@ gem "aws-sdk-s3", require: false
 gem "devise"
 
 gem "cssbundling-rails", "~> 1.1"
+
+gem "geocoder"
