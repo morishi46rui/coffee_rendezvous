@@ -2,12 +2,14 @@
   <div class="first-view-title">
     <h1 class="my-5 text-center border border-3 border-dark p-3">Welcome to <br>Coffee Rendezvous</h1>
   </div>
-  <div class="btn-group">
-  <div>
-  <%= link_to "カフェ新規登録", "#", class:"btn btn-outline-primary" %>
-  </div>
-  <div>
-  <%= link_to "カフェを探す", "#", class:"btn btn-outline-success" %>
-  </div>
+  <div class="btn-group d-flex justify-content-center">
+    <div class="row">
+      <div class="text-center mb-3 col-sm-12">
+        <%= link_to "カフェ新規登録", new_shop_path, class:"btn btn-outline-dark" %>
+      </div>
+      <div class="text-center mb-3 col-sm-12">
+        <%= link_to "カフェを探す", shops_path, class:"btn btn-outline-dark" %>
+      </div>
+    </div>
   </div>
 </div>
