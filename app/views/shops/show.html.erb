@@ -1,1 +1,51 @@
-<h1><%= @shop.name %></h1>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 mb-5">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h1 class="card-title mb-4 border-bottom border-3"><%= @shop.name %></h1>
+          <% if @shop.images.attached? %>
+            <% @shop.images.each do |image| %>
+              <%= image_tag image, class: "img-thumbnail mb-3" %>
+            <% end %>
+          <% else %>
+            <%= image_tag('no_image.png', class: "img-thumbnail mb-3") %>
+          <% end %>
+        </div>
+      </div>
+      <div class="card shop-map">
+        <div class="card-body">
+          <h5 class="card-title mb-4">マップ</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <div class="card shop-images mb-5">
+        <div class="card-body">
+          <h5 class="card-subtitle detail-index mb-3">住所</h5>
+          <p class="card-text"><%= @shop.address %></p>
+          <h5 class="card-subtitle detail-index mb-3">電話番号</h5>
+          <p class="card-text"><%= link_to @shop.phone, "tel:" + @shop.phone, class: "text-decoration-none" %></p>
+          <h5 class="card-subtitle detail-index mb-3">営業時間</h5>
+          <p class="card-text"><%= @shop.opening %></p>
+          <h5 class="card-subtitle detail-index mb-3">定休日</h5>
+          <p class="card-text"><%= @shop.closed %></p>
+          <h5 class="card-subtitle detail-index mb-3">タバコ</h5>
+          <p class="card-text"><%= @shop.smoking %></p>
+          <h5 class="card-subtitle detail-index mb-3">支払い方法</h5>
+          <p class="card-text"><%= @shop.payment %></p>
+          <h5 class="card-subtitle detail-index mb-3">Url</h5>
+          <%= link_to @shop.url, class: "text-decoration-none", target: :_blank do %>
+            <p class="card-text"><%= @shop.url %></p>
+          <% end %>
+          <% if current_user == @shop.user %>
+            <%= link_to "Edit", edit_shop_path(@shop), class: "btn btn-secondary mb-3" %>
+          <% end %>
+          <p class="card-text text-end">
+            by: <%= link_to @shop.user.name, user_path(@shop.user), class: "text-decoration-none" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
