@@ -270,6 +270,9 @@ GEM
       rubocop-ast (>= 1.1.0)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
+    seed-fu (2.3.9)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
     selenium-webdriver (4.8.6)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -335,6 +338,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails
   rubocop-airbnb
+  seed-fu
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
