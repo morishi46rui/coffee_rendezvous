@@ -39,7 +39,8 @@
             <p class="card-text"><%= @shop.url %></p>
           <% end %>
           <% if current_user == @shop.user %>
-            <%= link_to "Edit", edit_shop_path(@shop), class: "btn btn-secondary mb-3" %>
+            <%= link_to "編集", edit_shop_path(@shop), class: "btn btn-secondary mb-3" %>
+            <%= button_to "削除", shop_path(@shop), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger mb-3" %>
           <% end %>
           <p class="card-text text-end">
             by: <%= link_to @shop.user.name, user_path(@shop.user), class: "text-decoration-none" %>
