@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @shops = Shop.all
   end
@@ -10,7 +12,7 @@ class ShopsController < ApplicationController
   def create
     @shop = current_user.shops.new(shop_params)
     if @shop.save
-      redirect_to shop_path(@shop), notice: "Shop successfully created!"
+      redirect_to shop_path(@shop), notice: "カフェが登録されました！"
     else
       render :new
     end
@@ -23,7 +25,7 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
-      redirect_to @shop
+      redirect_to @shop, notice: "カフェが更新されました！"
     else
       render :edit
     end
