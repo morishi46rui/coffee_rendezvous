@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    content { "MyText" }
-    user { nil }
-    shop { nil }
+    content { "コメントの内容" }
+    user
+    shop
   end
 end
