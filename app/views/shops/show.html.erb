@@ -3,7 +3,18 @@
     <div class="col-sm-12 col-md-6 mb-5">
       <div class="card mb-3">
         <div class="card-body">
-          <h1 class="card-title mb-4 border-bottom border-3"><%= @shop.name %></h1>
+          <div class="d-flex align-items-center justify-content-between">
+            <h1 class="card-title mb-4 border-bottom border-3"><%= @shop.name %></h1>
+            <% if @shop.bookmarked_by?(current_user) %>
+              <%= form_with(url: shop_bookmark_path(@shop), method: :delete) do |form| %>
+                <%= form.submit "ブックマークを外す", class: "btn btn-outline-success" %>
+              <% end %>
+            <% else %>
+              <%= form_with(url: shop_bookmarks_path(@shop), method: :post) do |form| %>
+                <%= form.submit "ブックマーク", class: "btn btn-outline-success" %>
+              <% end %>
+            <% end %>
+          </div>
           <% if @shop.images.attached? %>
             <% @shop.images.each do |image| %>
               <%= image_tag image, class: "img-thumbnail mb-3" %>

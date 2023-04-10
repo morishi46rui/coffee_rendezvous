@@ -12,9 +12,14 @@ class Shop < ApplicationRecord
   has_many :shop_categories, dependent: :destroy
   has_many :categories, through: :shop_categories
   has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
+  end
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :address, presence: true

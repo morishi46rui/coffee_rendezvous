@@ -9,4 +9,14 @@
       <%= link_to "ユーザ情報を編集", edit_user_registration_path, class: "edit-link btn btn-primary" %>
     </div>
   <% end %>
+  <h2>ブックマークした店舗</h2>
+  <% if @user.bookmarks.present? %>
+    <ul>
+      <% @user.bookmarks.each do |bookmark| %>
+        <li><%= link_to bookmark.shop.name, shop_path(bookmark.shop) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>まだブックマークした店舗がありません。</p>
+  <% end %>
 </div>
