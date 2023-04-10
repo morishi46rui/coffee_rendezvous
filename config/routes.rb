@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'categories/index'
-  resources :shops
+  resources :shops do
+    resources :comments, only: [:create, :destroy]
+  end
   devise_for :users
   resources :users, only: [:show]
   root 'homes#index'
