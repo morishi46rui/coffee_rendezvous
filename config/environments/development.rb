@@ -35,6 +35,12 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :amazon
+  config.aws_credentials = {
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    region: ENV['AWS_REGION']
+  }
+  config.aws_bucket = ENV['AWS_BUCKET_NAME']
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
