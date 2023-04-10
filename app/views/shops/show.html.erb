@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="col-sm-12 col-md-6">
-      <div class="card shop-images mb-5">
+      <div class="card shop-images mb-3">
         <div class="card-body">
           <h5 class="card-subtitle detail-index mb-3">カテゴリー</h5>
           <p class="card-text"><%= @shop.categories.pluck(:name).join(", ") %></p>
@@ -47,6 +47,33 @@
           <p class="card-text text-end">
             by: <%= link_to @shop.user.name, user_path(@shop.user), class: "text-decoration-none" %>
           </p>
+        </div>
+      </div>
+      <div class="card shop-images mb-5">
+        <div class="card-body">
+          <h5 class="card-title mb-4">コメント</h5>
+          <% @comments.each do |comment| %>
+            <div class="comment-area rounded p-2 mt-2">
+              <p><%= comment.user.name %>のコメント<i class="far fa-comment mx-1"></i></p>
+              <p>
+                <%= comment.content %>
+                <% if user_signed_in? && current_user == comment.user %>
+                  <%= link_to "削除", [comment.shop, comment], method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm px-2" %>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+          <%= form_with model:[@shop, @comment], local: true do |form|  %>
+            <div>
+              <div class="form-group mt-2">
+                <%= form.label :コメントを投稿する %>
+                <%= form.text_area :content, class: "form-control" %>
+              </div>
+              <div class="text-end mt-1">
+                <%= form.submit "送信", class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

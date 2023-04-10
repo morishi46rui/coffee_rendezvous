@@ -11,6 +11,7 @@ class Shop < ApplicationRecord
   has_many_attached :images, dependent: :destroy
   has_many :shop_categories, dependent: :destroy
   has_many :categories, through: :shop_categories
+  has_many :comments, dependent: :destroy
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
