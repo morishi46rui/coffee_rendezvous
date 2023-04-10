@@ -1,0 +1,41 @@
+<div id="map" style="height: 400px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+<script>
+  function initMap() {
+
+    const lat = <%= @shop.latitude %>;
+    const lng = <%= @shop.longitude %>;
+
+    const mapElement = document.getElementById('map');
+
+    const mapOptions = {
+      zoom: 16,
+      center: new google.maps.LatLng(lat, lng)
+    };
+
+    const map = new google.maps.Map(mapElement, mapOptions);
+
+    const marker = new google.maps.Marker({
+      position: new google.maps.LatLng(lat, lng),
+      map: map
+    });
+
+    const contentString = '<div>' +
+      '<h4><%= @shop.name %></h4>' +
+      '<p><a href="<%= @shop.url %>"><%= @shop.url %></a></p>' +
+      '<p><a href="https://www.google.com/maps/dir/?api=1&destination=' + lat + ',' + lng + '" target="_blank">Googleマップで経路を検索する</a></p>'+
+      '</div>';
+
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+
+  window.onload = function() {
+    initMap();
+  }
+</script>
