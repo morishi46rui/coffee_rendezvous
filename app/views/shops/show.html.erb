@@ -54,13 +54,13 @@
           <h5 class="card-title mb-4">コメント</h5>
           <% @comments.each do |comment| %>
             <div class="comment-area rounded p-2 mt-2">
-              <p><%= comment.user.name %>のコメント<i class="far fa-comment mx-1"></i></p>
-              <p>
-                <%= comment.content %>
+              <p><%= comment.user.name %>さんのコメント<i class="far fa-comment mx-1"></i></p>
+              <div class="comments-content d-flex">
+                <p><%= comment.content %></p>
                 <% if user_signed_in? && current_user == comment.user %>
-                  <%= link_to "削除", [comment.shop, comment], method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm px-2" %>
+                  <%= button_to "削除", [comment.shop, comment], method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm px-2 mx-2" %>
                 <% end %>
-              </p>
+              </div>
             </div>
           <% end %>
           <%= form_with model:[@shop, @comment], local: true do |form|  %>
