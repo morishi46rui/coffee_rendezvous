@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'bookmarks/create'
+  get 'bookmarks/destroy'
   get 'categories/index'
   resources :shops do
     resources :comments, only: [:create, :destroy]
