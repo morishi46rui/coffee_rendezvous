@@ -2,7 +2,9 @@ class ShopsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @shops = Shop.all
+    @q = Shop.ransack(params[:q])
+    @shops = @q.result(distinct: true).order(id: :DESC)
+    @categories = Category.all
   end
 
   def new
@@ -52,5 +54,9 @@ class ShopsController < ApplicationController
   def shop_params
     params.require(:shop).permit(:name, :description, :address, :latitude, :longitude, :phone, :opening, :closed,
     :smoking, :payment, :url, images: [], category_ids: [])
+  end
+
+  def set_q
+    @q = Shop.ransack(params[:q])
   end
 end

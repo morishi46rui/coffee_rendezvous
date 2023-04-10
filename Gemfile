@@ -86,3 +86,5 @@ gem "cssbundling-rails", "~> 1.1"
 gem "geocoder"
 
 gem "seed-fu"
+
+gem "ransack"

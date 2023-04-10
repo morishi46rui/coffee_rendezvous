@@ -1,5 +1,13 @@
 class Shop < ApplicationRecord
-  belongs_to :user
+  def self.ransackable_attributes(auth_object = nil)
+    ["name", "address"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["categories", "images_attachments", "images_blobs", "shop_categories", "user"]
+  end
+
+  belongs_to :user, dependent: :destroy
   has_many_attached :images, dependent: :destroy
   has_many :shop_categories, dependent: :destroy
   has_many :categories, through: :shop_categories

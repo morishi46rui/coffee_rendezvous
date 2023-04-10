@@ -1,4 +1,46 @@
 <div class="container">
+<div class="search-forms mb-5 border border-dark border-4 p-5 row">
+  <h1 class="text-center col-12">検索</h1>
+  <div class="search-form col-sm-12 col-md-6">
+    <form class="form border-end border-2 border-success d-flex pe-2 my-5">
+      <%= search_form_for @q, class:"shop-search keyword-search", url: shops_path do |form| %>
+        <%= form.search_field :name_or_address_cont, label: '住所や店名で検索', class: 'form-control  input-word mx-2', placeholder: '住所や店名で検索' %>
+        <%= button_tag type: 'submit', class: 'btn btn-success my-2 my-sm-0 text-center' do  %>
+          <i class="fa fa-search" aria-hidden="true"></i>
+        <% end %>
+      <% end %>
+    </form>
+  </div>
+  <div class="search-form col-sm-12 col-md-6">
+    <div class="accordion mt-5" id="accordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              こだわりで検索
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body text-start">
+              <strong class="">お店のこだわり（カテゴリー）</strong>
+              <%= search_form_for @q, class:"shop-search category-search", url: shops_path do |form| %>
+                <%= form.collection_check_boxes :categories_id_in, @categories, :id, :name do |b| %>
+                  <div class="categories-list">
+                    <%= b.check_box class: "form-check-input", id: "flexCheckDefault" %>
+                    <%= b.label class: "form-check-label" %>
+                  </div>
+                <% end %>
+                <div class="mt-2 text-end">
+                  <%= button_tag type: 'submit', class: 'btn btn-success my-2 my-sm-0 text-center' do  %>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
   <h1 class="text-center mb-5">カフェ一覧</h1>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% @shops.each do |shop| %>
