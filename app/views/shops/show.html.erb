@@ -22,6 +22,8 @@
     <div class="col-sm-12 col-md-6">
       <div class="card shop-images mb-5">
         <div class="card-body">
+          <h5 class="card-subtitle detail-index mb-3">カテゴリー</h5>
+          <p class="card-text"><%= @shop.categories.pluck(:name).join(", ") %></p>
           <h5 class="card-subtitle detail-index mb-3">住所</h5>
           <p class="card-text"><%= @shop.address %></p>
           <h5 class="card-subtitle detail-index mb-3">電話番号</h5>
