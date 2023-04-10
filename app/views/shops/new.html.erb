@@ -19,16 +19,20 @@
         </div>
         <div class="form-group mb-3">
           <%= form.label :category_ids, "カテゴリー" %>
-          <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-            <div class="form-check">
-              <%= b.check_box class: "form-check-input" %>
-              <%= b.label class: "form-check-label" %>
-            </div>
-          <% end %>
+          <div class="row">
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+              <div class="col-md-6 col-sm-12">
+                <div class="form-check">
+                  <%= b.check_box class: "form-check-input" %>
+                  <%= b.label class: "form-check-label" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
         <div class="form-group mb-3">
           <%= form.label :住所, class: "form-label" %>
-          <%= form.text_field :address, class: "form-control", placeholder: "東京都新宿区新宿丁1-1-1" %>
+          <%= form.text_field :address, class: "form-control", placeholder: "東京都新宿区新宿1-1-1" %>
         </div>
         <div class="form-group mb-3">
           <%= form.label :電話番号, class: "form-label" %>

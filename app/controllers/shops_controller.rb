@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
   def create
     @shop = current_user.shops.new(shop_params)
     if @shop.save
+      @shop.categories << Category.where(id: params[:category_ids])
       redirect_to shop_path(@shop), notice: "カフェが登録されました！"
     else
       render :new
@@ -50,6 +51,6 @@ class ShopsController < ApplicationController
 
   def shop_params
     params.require(:shop).permit(:name, :description, :address, :latitude, :longitude, :phone, :opening, :closed,
-    :smoking, :payment, :url, images: [])
+    :smoking, :payment, :url, images: [], category_ids: [])
   end
 end
