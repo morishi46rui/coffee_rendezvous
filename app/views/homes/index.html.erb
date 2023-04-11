@@ -1,16 +1,11 @@
 <div class="container">
-  <div class="first-view-title">
-    <h1 class="my-5 text-center border border-3 border-dark p-3">Welcome to <br>Coffee Rendezvous</h1>
+  <%= render 'homes/first_view' %>
+  <div class="container my-5 py-3 bg-light">
+    <%= render 'homes/new_shops' %>
   </div>
-  <div class="btn-group d-flex justify-content-center">
-    <div class="row">
-      <div class="text-center mb-3 col-sm-12">
-        <%= link_to "カフェ新規登録", new_shop_path, class:"btn btn-outline-dark" %>
-      </div>
-      <div class="text-center mb-3 col-sm-12">
-        <%= link_to "カフェを探す", shops_path, class:"btn btn-outline-dark" %>
-      </div>
-    </div>
-  </div>
+<div class="row mb-3">
+  <%= render 'homes/new_comments' %>
+  <%= render 'homes/popular_shops' %>
+</div>
   <%= render 'homes/shops_map' %>
 </div>

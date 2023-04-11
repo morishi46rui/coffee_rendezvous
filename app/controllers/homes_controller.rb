@@ -2,6 +2,9 @@ class HomesController < ApplicationController
   def index
     @user = current_user
     @shops = Shop.all
+    @new_shops = Shop.order(created_at: :desc).limit(3)
+    @new_comments = Comment.order(created_at: :desc).limit(3)
+    @popular_shops = Shop.joins(:bookmarks).group(:id).order('count(bookmarks.id) desc').limit(3)
     @markers = @shops.map do |shop|
       {
         lat: shop.latitude,
