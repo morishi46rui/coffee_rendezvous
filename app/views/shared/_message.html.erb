@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <% if notice.present? %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= alert %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  setTimeout(function() {
+    const messages = document.querySelectorAll('.alert, .notice');
+    messages.forEach(function(message) {
+      message.classList.add('fade-out');
+      setTimeout(function() {
+        message.style.display = 'none';
+      }, 1000);
+    });
+  }, 5000);
+</script>

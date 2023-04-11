@@ -88,3 +88,5 @@ gem "geocoder"
 gem "seed-fu"
 
 gem "ransack"
+
+gem "rails-i18n"
