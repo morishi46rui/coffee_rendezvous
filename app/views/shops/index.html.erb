@@ -23,12 +23,16 @@
               <div class="accordion-body text-start">
                 <strong class="">お店のこだわり（カテゴリー）</strong>
                 <%= search_form_for @q, class:"shop-search category-search", url: shops_path do |form| %>
-                  <%= form.collection_check_boxes :categories_id_in, @categories, :id, :name do |b| %>
-                    <div class="categories-list">
-                      <%= b.check_box class: "form-check-input", id: "flexCheckDefault" %>
-                      <%= b.label class: "form-check-label" %>
-                    </div>
-                  <% end %>
+                  <div class="row">
+                    <%= form.collection_check_boxes :categories_id_in, @categories, :id, :name do |b| %>
+                      <div class="col-md-6">
+                        <div class="form-check">
+                          <%= b.check_box class: "form-check-input", id: "flexCheckDefault" %>
+                          <%= b.label class: "form-check-label" %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
                   <div class="mt-2 text-end">
                     <%= button_tag type: 'submit', class: 'btn btn-success my-2 my-sm-0 text-center' do  %>
                       <i class="fa fa-search" aria-hidden="true"></i>
