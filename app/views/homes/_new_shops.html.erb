@@ -5,11 +5,11 @@
       <div class="card h-100">
         <% if shop.images.attached? %>
           <%= link_to shop_path(shop) do %>
-            <%= image_tag shop.images[0], alt: "店舗の写真", class: "card-img-top", style: "object-fit: cover; height: 200px;" %>
+            <%= image_tag shop.images[0], alt: "店舗の写真", class: "card-img-top p-3", style: "object-fit: cover; height: 200px;" %>
           <% end %>
         <% else %>
           <%= link_to shop_path(shop) do %>
-            <%= image_tag 'no_image.png', alt: "店舗の写真", class: "card-img-top", style: "object-fit: cover; height: 200px;" %>
+            <%= image_tag 'no_image.png', alt: "店舗の写真", class: "card-img-top p-3 ", style: "object-fit: cover; height: 200px;" %>
           <% end %>
         <% end %>
         <div class="card-body">

@@ -18,9 +18,7 @@
     </div>
     <div class="col-sm-12 col-md-8">
       <div class="card my-bookmark mb-3">
-        <div class="card-header">
-          <h2 class="mb-3">ブックマークしたカフェ</h2>
-        </div>
+        <h2 class="mb-3 card-header">ブックマークしたカフェ</h2>
         <div class="card-body">
           <% if @user.bookmarks.present? %>
             <ul class="list-group">
@@ -37,9 +35,7 @@
         </div>
       </div>
       <div class="card my-shops">
-        <div class="card-header">
-          <h2 class="mb-3">登録した店舗</h2>
-        </div>
+        <h2 class="mb-3 card-header">登録した店舗</h2>
         <div class="card-body">
           <% if @user.shops.present? %>
             <ul class="list-group">

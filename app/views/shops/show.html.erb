@@ -3,111 +3,25 @@
     <div class="col-sm-12 col-md-6 mb-3">
       <div class="card mb-3">
         <div class="card-body">
-          <div class="row mb-3">
-            <h1 class="card-title mb-4 border-bottom border-3 col-md-12 col-lg-8"><%= @shop.name %></h1>
-            <div class="bookmark-btn col-md-12 col-lg-4 text-end">
-              <% if @shop.bookmarked_by?(current_user) %>
-                <%= form_with(url: shop_bookmark_path(@shop), method: :delete) do |form| %>
-                  <%= form.submit "ブックマークを外す", class: "btn btn-outline-success btn-sm" %>
-                <% end %>
-              <% else %>
-                <%= form_with(url: shop_bookmarks_path(@shop), method: :post) do |form| %>
-                  <%= form.submit "ブックマーク", class: "btn btn-outline-success btn-sm" %>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-          <% if @shop.images.attached? %>
-            <% @shop.images.each do |image| %>
-              <%= image_tag image, class: "img-thumbnail mb-3" %>
-            <% end %>
-          <% else %>
-            <%= image_tag('no_image.png', class: "img-thumbnail mb-3") %>
-          <% end %>
+          <%= render 'shops/bookmark' %>
+          <%= render 'shops/images' %>
         </div>
       </div>
       <div class="card shop-map">
         <div class="card-body">
-          <h5 class="card-title">マップ</h5>
           <%= render "shops/map" %>
         </div>
       </div>
     </div>
     <div class="col-sm-12 col-md-6">
-      <div class="card shop-images mb-3">
+      <div class="card mb-3">
         <div class="card-body">
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">カテゴリー</h5>
-            <p class="card-text"><%= @shop.categories.pluck(:name).join(", ") %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">住所</h5>
-            <p class="card-text"><%= @shop.address %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">電話番号</h5>
-            <p class="card-text"><%= link_to @shop.phone, "tel:" + @shop.phone, class: "text-decoration-none" %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">営業時間</h5>
-            <p class="card-text"><%= @shop.opening %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">定休日</h5>
-            <p class="card-text"><%= @shop.closed %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">タバコ</h5>
-            <p class="card-text"><%= @shop.smoking %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">支払い方法</h5>
-            <p class="card-text"><%= @shop.payment %></p>
-          </div>
-          <div class="mb-3">
-            <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">Url</h5>
-            <%= link_to @shop.url, class: "text-decoration-none", target: :_blank do %>
-              <p class="card-text"><%= @shop.url %></p>
-            <% end %>
-          </div>
-          <% if current_user == @shop.user %>
-            <div class="user-btn d-flex">
-              <%= link_to "編集", edit_shop_path(@shop), class: "btn btn-secondary mb-3 me-3" %>
-              <%= button_to "削除", shop_path(@shop), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger mb-3" %>
-            </div>
-          <% end %>
-          <div class="text-end">
-            <p class="card-text">by: <%= link_to @shop.user.name, user_path(@shop.user), class: "text-decoration-none" %></p>
-          </div>
+          <%= render 'shops/detail' %>
         </div>
       </div>
       <div class="card shop-images mb-5">
         <div class="card-body">
-          <h5 class="card-title mb-4">コメント</h5>
-          <% @comments.each do |comment| %>
-            <div class="card mb-3 comment-area">
-              <div class="card-header">
-                <%= comment.user.name %>さんのコメント<i class="far fa-comment mx-1"></i>
-              </div>
-              <div class="card-body d-flex text-align-center">
-                <p class="card-text"><%= comment.content %></p>
-                <% if user_signed_in? && current_user == comment.user %>
-                  <%= button_to "削除", [comment.shop, comment], method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm px-2 mx-2" %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-          <%= form_with model:[@shop, @comment], local: true do |form|  %>
-            <div>
-              <div class="form-group mt-2">
-                <%= form.label :コメントを投稿する %>
-                <%= form.text_area :content, class: "form-control" %>
-              </div>
-              <div class="text-end mt-1">
-                <%= form.submit "送信", class: "btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
+          <%= render 'shops/comments' %>
         </div>
       </div>
     </div>
