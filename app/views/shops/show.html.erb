@@ -85,12 +85,14 @@
         <div class="card-body">
           <h5 class="card-title mb-4">コメント</h5>
           <% @comments.each do |comment| %>
-            <div class="comment-area rounded p-2 mt-2">
-              <p><%= comment.user.name %>さんのコメント<i class="far fa-comment mx-1"></i></p>
-              <div class="comments-content d-flex">
-                <p><%= comment.content %></p>
+            <div class="card mb-3 comment-area">
+              <div class="card-header">
+                <%= comment.user.name %>さんのコメント<i class="far fa-comment mx-1"></i>
+              </div>
+              <div class="card-body d-flex text-align-center">
+                <p class="card-text"><%= comment.content %></p>
                 <% if user_signed_in? && current_user == comment.user %>
-                  <%= button_to "削除", [comment.shop, comment], method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm px-2 mx-2" %>
+                  <%= button_to "削除", [comment.shop, comment], method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger btn-sm px-2" %>
                 <% end %>
               </div>
             </div>
