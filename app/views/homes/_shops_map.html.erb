@@ -16,7 +16,7 @@
       fullscreenControl: false,
       mapTypeControl: false,
       gestureHandling: 'auto',
-      zoom: 14,
+      zoom: 15,
     });
     infoWindow = new google.maps.InfoWindow();
 
@@ -61,8 +61,8 @@
     }
   });
 
-  window.addEventListener('load', function () {
-    initMap();
-  });
+  window.onload = function() {
+  initMap();
+  }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap&libraries=places&v=weekly" defer></script>
