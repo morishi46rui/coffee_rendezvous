@@ -5,7 +5,7 @@
 </div>
 
 <script>
-  const markers = <%= raw @markers.to_json %>;
+  let markers = <%= raw @markers.to_json %>;
   let map, infoWindow;
 
   function initMap() {
