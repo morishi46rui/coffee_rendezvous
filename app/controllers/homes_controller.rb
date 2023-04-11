@@ -1,6 +1,14 @@
 class HomesController < ApplicationController
   def index
     @user = current_user
+    @shops = Shop.all
+    @markers = @shops.map do |shop|
+      {
+        lat: shop.latitude,
+        lng: shop.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { shop: shop }),
+      }
+    end
   end
 
   def guest
@@ -11,7 +19,6 @@ class HomesController < ApplicationController
     user.save
     sign_in user
     redirect_to root_path, notice: "ゲストユーザーとしてログインしました"
-
   end
 
   private
