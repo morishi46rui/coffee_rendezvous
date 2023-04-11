@@ -7,7 +7,7 @@ class Shop < ApplicationRecord
     ["categories", "images_attachments", "images_blobs", "shop_categories", "user"]
   end
 
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
   has_many_attached :images, dependent: :destroy
   has_many :shop_categories, dependent: :destroy
   has_many :categories, through: :shop_categories
