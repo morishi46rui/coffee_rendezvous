@@ -1,6 +1,6 @@
 <div class="new-comments col-sm-12 col-md-6 py-3 bg-light">
   <h2 class="mb-3">新着コメント<i class="far fa-comment mx-1"></i></h2>
-  <% @new_comments.each do |comment| %>
+  <% new_comments.each do |comment| %>
   <div class="card mb-3">
     <div class="card-body">
       <p class="card-text"><%= comment.content %></p>

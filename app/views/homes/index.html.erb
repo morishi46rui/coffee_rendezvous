@@ -1,11 +1,11 @@
 <div class="container">
   <%= render 'homes/first_view' %>
   <div class="container mb-3 py-3 bg-light">
-    <%= render 'homes/new_shops' %>
+    <%= render 'homes/new_shops', new_shops: @new_shops %>
   </div>
 <div class="row mb-3">
-  <%= render 'homes/new_comments' %>
-  <%= render 'homes/popular_shops' %>
+  <%= render 'homes/new_comments', new_comments: @new_comments %>
+  <%= render 'homes/popular_shops', popular_shops: @popular_shops %>
 </div>
   <%= render 'homes/shops_map' %>
 </div>

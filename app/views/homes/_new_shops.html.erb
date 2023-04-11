@@ -1,6 +1,6 @@
 <h2 class="text-center mb-5">新着カフェ<i class="fas fa-coffee mx-1"></i></h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-  <% @new_shops.each do |shop| %>
+  <% new_shops.each do |shop| %>
     <div class="col">
       <div class="card h-100">
         <% if shop.images.attached? %>
