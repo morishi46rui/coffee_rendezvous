@@ -31,7 +31,7 @@ RSpec.describe 'shops/index', type: :system do
     expect(page).to have_selector('.card', count: Shop.joins(:categories).where(categories: { id: first_category.id }).count)
   end
 
-  it 'displays a map', js:true do
+  it 'displays a map', js: true do
     visit shop_path(shop)
     expect(page).to have_content "マップ"
   end
@@ -48,10 +48,10 @@ RSpec.describe 'shops/index', type: :system do
       end
 
       it "allows the user to bookmark the shop" do
-        expect {
+        expect do
           click_button "ブックマーク"
           expect(page).to have_button("ブックマークを外す")
-        }.to change { user.bookmarks.count }.by(1)
+        end.to change { user.bookmarks.count }.by(1)
       end
     end
 
@@ -68,10 +68,10 @@ RSpec.describe 'shops/index', type: :system do
       end
 
       it "allows the user to remove the bookmark" do
-        expect {
+        expect do
           click_button "ブックマークを外す"
           expect(page).to have_button("ブックマーク")
-        }.to change { user.bookmarks.count }.by(-1)
+        end.to change { user.bookmarks.count }.by(-1)
       end
     end
   end
