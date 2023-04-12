@@ -30,4 +30,49 @@ RSpec.describe 'shops/index', type: :system do
     find('.category-search button[type="submit"]').click
     expect(page).to have_selector('.card', count: Shop.joins(:categories).where(categories: { id: first_category.id }).count)
   end
+
+  it 'displays a map', js:true do
+    visit shop_path(shop)
+    expect(page).to have_content "マップ"
+  end
+
+  describe "bookmark section" do
+    context "when the user has not bookmarked the shop" do
+      before do
+        sign_in user
+        visit shop_path(shop)
+      end
+
+      it "shows a bookmark button" do
+        expect(page).to have_button("ブックマーク")
+      end
+
+      it "allows the user to bookmark the shop" do
+        expect {
+          click_button "ブックマーク"
+          expect(page).to have_button("ブックマークを外す")
+        }.to change { user.bookmarks.count }.by(1)
+      end
+    end
+
+    context "when the user has already bookmarked the shop" do
+      let!(:bookmark) { create(:bookmark, user: user, shop: shop) }
+
+      before do
+        sign_in user
+        visit shop_path(shop)
+      end
+
+      it "shows a bookmark removal button" do
+        expect(page).to have_button("ブックマークを外す")
+      end
+
+      it "allows the user to remove the bookmark" do
+        expect {
+          click_button "ブックマークを外す"
+          expect(page).to have_button("ブックマーク")
+        }.to change { user.bookmarks.count }.by(-1)
+      end
+    end
+  end
 end
