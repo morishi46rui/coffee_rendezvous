@@ -1,24 +1,26 @@
-# README
+<h1>Coffee Rendezvous</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h2>概要</h2>
+<p>このアプリケーションは、ユーザーが気になるカフェの情報を登録・共有することを目的としています。店舗名やエリア名の検索、カフェの特徴によってあなた好みのカフェを見つけることができます。</p>
 
-Things you may want to cover:
+<h2>背景</h2>
+<p>「チェーン店のカフェばかりでつまらない。奴らは広告に金をかけられるから検索すれば上位に表示される。排除しろ。」
+恋人のそんな物騒な発言がきっかけでした。もちろん物理的に排除することは不可能なので、ならばチェーン店以外の個性的で魅力的なカフェが登録され、探すことができるアプリケーションを作ろうと思い、制作に取り組みました。</p>
 
-* Ruby version
+<h2>機能</h2>
+<ul>
+  <li>カフェ情報の登録・編集・削除</li>
+  <li>ユーザー登録・ログイン機能</li>
+  <li>カフェ情報の検索機能</li>
+  <li>カフェのブックマーク機能・コメント機能</li>
+</ul>
 
-* System dependencies
+<h2>技術スタック</h2>
+<ul>
+  <li>Ruby 3.1.2</li>
+  <li>Ruby on Rails 6.1.4</li>
+  <li>Active Storage</li>
+  <li>Bootstrap 5</li>
+</ul>
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h2>ER図</h2>
