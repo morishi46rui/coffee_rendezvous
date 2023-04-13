@@ -9,18 +9,29 @@
 
 <h2>機能</h2>
 <ul>
-  <li>カフェ情報の登録・編集・削除</li>
   <li>ユーザー登録・ログイン機能</li>
+  <li>カフェ情報の登録・編集・削除</li>
+  <li>カフェ情報の閲覧機能</li>
   <li>カフェ情報の検索機能</li>
   <li>カフェのブックマーク機能・コメント機能</li>
 </ul>
 
+<h2>デモ</h2>
+<strong>①トップページ</strong>
+
+
 <h2>技術スタック</h2>
 <ul>
-  <li>Ruby 3.1.2</li>
-  <li>Ruby on Rails 6.1.4</li>
-  <li>Active Storage</li>
+  <li>HTML/CSS</li>
   <li>Bootstrap 5</li>
+  <li>Ruby 3.1.4</li>
+  <li>Ruby on Rails 7.0.4.3</li>
+  <li>Active Storage</li>
+  <li>PostgreSQL</li>
+  <li>Google Maps Api</li>
+  <li>geocoder</li>
+  <li>Ransack</li>
 </ul>
 
 <h2>ER図</h2>
+![ER図](app/assets/images/00ER図.png)
