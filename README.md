@@ -34,4 +34,4 @@
 </ul>
 
 <h2>ER図</h2>
-![ER図](app/assets/images/00ER図.png)
+![ER図](https://raw.githubusercontent.com/morishi46rui/app/assets/images/00ER図.png)
