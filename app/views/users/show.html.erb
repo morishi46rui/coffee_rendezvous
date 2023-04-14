@@ -10,7 +10,11 @@
           <p class="card-text mb-3"><%= @user.profile %></p>
           <% if @user == current_user %>
             <div class="mb-3">
-              <%= link_to "ユーザ情報を編集", edit_user_registration_path, class: "btn btn-primary" %>
+              <% if @user.email == "guest@example.com" %>
+                <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+              <% else %>
+                <%= link_to "ユーザ情報を編集", edit_user_registration_path, class: "btn btn-primary" %>
+              <% end %>
             </div>
           <% end %>
         </div>

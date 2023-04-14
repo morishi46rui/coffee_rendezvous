@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   end
   devise_for :users
   resources :users, only: [:show]
-  post '/guest_sign_in' => 'homes#guest'
+  post '/guest_sign_in', to: 'guest_sessions#create'
   root 'homes#index'
 end
