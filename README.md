@@ -39,7 +39,7 @@
 <h4>5.コメント機能・ブックマーク機能</h4>
 <p>カフェ詳細画面ではコメント機能とブックマーク機能を使用できます。自分のコメント、ブックマークはマイページに表示されます。</p>
 <img src="https://user-images.githubusercontent.com/64954428/231764661-7a639494-77d7-4632-a7a8-c5faf7be7576.jpeg" />
-<img src="https://user-images.githubusercontent.com/64954428/231765483-42352ca4-0f58-4cc9-a1f5-f2fe62f02b0d.png" />
+<img src="https://user-images.githubusercontent.com/64954428/232070718-197da7dd-2b24-4317-86e7-2ed5dbce61a9.jpeg" />
 
 <h4>6.カフェ検索画面</h4>
 <p>店名・住所のキーワード検索、お店のこだわりによるカテゴリー検索を用いて、カフェを絞り込むことができます。例えばご飯中心にカフェを選びたい時はFoodsにカテゴライズされるカフェのみを表示することができます。</p>
