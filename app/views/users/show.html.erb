@@ -38,7 +38,7 @@
           <% end %>
         </div>
       </div>
-      <div class="card my-shops">
+      <div class="card my-shops mb-3">
         <h2 class="mb-3 card-header">登録した店舗</h2>
         <div class="card-body">
           <% if @user.shops.present? %>
@@ -52,6 +52,26 @@
             </ul>
           <% else %>
             <p>まだ登録した店舗がありません。</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="card my-comments mb-3">
+        <h2 class="mb-3 card-header">投稿したコメント</h2>
+        <div class="card-body">
+          <% if @user.comments.present? %>
+            <ul class="list-group">
+              <% @user.comments.each do |comment| %>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between">
+                    <p><%= comment.content %></p>
+                    <span><i class="far fa-comment mx-1"></i><%= comment.created_at.strftime("%Y/%m/%d") %></span>
+                  </div>
+                  <p class="text-end"><%= link_to comment.shop.name, shop_path(comment.shop) %></p>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>まだコメントがありません。</p>
           <% end %>
         </div>
       </div>
