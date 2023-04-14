@@ -1,0 +1,80 @@
+<footer class="bg-light py-5 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <h5>About Us</h5>
+        <p>Our mission is to provide the best coffee experience for all our customers.</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Contact Us</h5>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-phone"></i> +1-123-456-7890</li>
+          <li><i class="fas fa-envelope"></i> info@mycoffee.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, Anytown USA</li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-3">
+        <h5>Follow Us</h5>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <%= link_to "https://www.instagram.com/coffee_rendez_vous/", target: "_blank", rel:"noopener noreferrer" do %>
+              <i class="fab fa-instagram"></i>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              利用規約
+            </button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">利用規約</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>ここに利用規約の内容を記載します。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="list-inline-item">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#privacyModal">
+              プライバシーポリシー
+            </button>
+            <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">プライバシーポリシー</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>ここにプライバシーポリシーの内容を記載します。</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6 mb-3 text-md-right">
+        <small>&copy; 2023 Morishi. All Rights Reserved.</small>
+      </div>
+    </div>
+  </div>
+</footer>

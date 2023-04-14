@@ -1,0 +1,14 @@
+<div class="new-comments col-md-12 col-xxl-6 py-3 bg-light">
+  <h2 class="mb-3">新着コメント<i class="far fa-comment mx-1"></i></h2>
+  <% new_comments.each do |comment| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <p class="card-text"><%= comment.content %></p>
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to comment.shop.name, shop_path(comment.shop), class: "card-link stretched-link" %>
+        <small class="text-muted"><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">カテゴリー</h5>
+  <p class="card-text"><%= @shop.categories.pluck(:name).join(", ") %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">住所</h5>
+  <p class="card-text"><%= @shop.address %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">電話番号</h5>
+  <p class="card-text"><%= link_to @shop.phone, "tel:" + @shop.phone, class: "text-decoration-none" %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">営業時間</h5>
+  <p class="card-text"><%= @shop.opening %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">定休日</h5>
+  <p class="card-text"><%= @shop.closed %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">タバコ</h5>
+  <p class="card-text"><%= @shop.smoking %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">支払い方法</h5>
+  <p class="card-text"><%= @shop.payment %></p>
+</div>
+<div class="mb-3">
+  <h5 class="card-subtitle detail-index border-bottom border-1 fw-bold">Url</h5>
+  <%= link_to @shop.url, class: "text-decoration-none", target: :_blank do %>
+    <p class="card-text"><%= @shop.url %></p>
+  <% end %>
+</div>
+<% if current_user == @shop.user %>
+  <div class="user-btn d-flex">
+    <%= link_to "編集", edit_shop_path(@shop), class: "btn btn-secondary mb-3 me-3" %>
+    <%= button_to "削除", shop_path(@shop), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger mb-3" %>
+  </div>
+<% end %>
+<div class="text-end">
+  <p class="card-text">by: <%= link_to @shop.user.name, user_path(@shop.user), class: "text-decoration-none" %></p>
+</div>

@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <div class="card p-3 mb-3">
+        <div class="card-body text-center">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar, class: "avatar-image rounded-circle overflow-hidden mb-3", style: "object-fit: cover; width: 150px; height: 150px;" %>
+          <% end %>
+          <h1 class="card-title mb-3"><%= @user.name %></h1>
+          <p class="card-text mb-3"><%= @user.profile %></p>
+          <% if @user == current_user %>
+            <div class="mb-3">
+              <% if @user.email == "guest@example.com" %>
+                <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+              <% else %>
+                <%= link_to "ユーザ情報を編集", edit_user_registration_path, class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <div class="card my-bookmark mb-3">
+        <h2 class="mb-3 card-header">ブックマークしたカフェ</h2>
+        <div class="card-body">
+          <% if @user.bookmarks.present? %>
+            <ul class="list-group">
+              <% @user.bookmarks.each do |bookmark| %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <%= link_to bookmark.shop.name, shop_path(bookmark.shop), class: "stretched-link" %>
+                  <span><i class="fas fa-bookmark mx-1"></i><%= bookmark.created_at.strftime("%Y/%m/%d") %></span>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>まだブックマークしたカフェがありません。</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="card my-shops mb-3">
+        <h2 class="mb-3 card-header">登録した店舗</h2>
+        <div class="card-body">
+          <% if @user.shops.present? %>
+            <ul class="list-group">
+              <% @user.shops.each do |shop| %>
+                <li class="list-group-item d-flex justify-content-between">
+                  <%= link_to shop.name, shop_path(shop), class: "stretched-link" %>
+                  <span><i class="fas fa-coffee mx-1"></i><%= shop.created_at.strftime("%Y/%m/%d") %></span>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>まだ登録した店舗がありません。</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="card my-comments mb-3">
+        <h2 class="mb-3 card-header">投稿したコメント</h2>
+        <div class="card-body">
+          <% if @user.comments.present? %>
+            <ul class="list-group">
+              <% @user.comments.each do |comment| %>
+                <li class="list-group-item">
+                  <div class="d-flex justify-content-between">
+                    <p><%= comment.content %></p>
+                    <span><i class="far fa-comment mx-1"></i><%= comment.created_at.strftime("%Y/%m/%d") %></span>
+                  </div>
+                  <p class="text-end"><%= link_to comment.shop.name, shop_path(comment.shop) %></p>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            <p>まだコメントがありません。</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="card mt-5">
+    <h2 class="card-header text-center">カフェの登録</h2>
+    <div class="card-body">
+      <%= form_with model: @shop, local: true do |form| %>
+        <% if @shop.errors.any? %>
+          <div id="error_explanation" class="alert alert-danger">
+            <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+            <ul>
+              <% @shop.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-group mb-3">
+          <%= form.label :店名, class: "form-label" %>
+          <%= form.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :category_ids, "カテゴリー" %>
+          <div class="row">
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+              <div class="col-md-6 col-sm-12">
+                <div class="form-check">
+                  <%= b.check_box class: "form-check-input" %>
+                  <%= b.label class: "form-check-label" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :住所, class: "form-label" %>
+          <%= form.text_field :address, class: "form-control", placeholder: "東京都新宿区新宿1-1-1" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :電話番号, class: "form-label" %>
+          <%= form.text_field :phone, class: "form-control" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :営業時間, class: "form-label" %>
+          <%= form.text_field :opening, class: "form-control", placeholder: "10:00~17:00" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :定休日, class: "form-check-label" %>
+          <%= form.text_field :closed, class: "form-control", placeholder: "月曜日 不定休" %>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :タバコ %>
+          <%= form.select("smoking", ["全面禁煙", "喫煙可", "分煙", "喫煙室あり", "電子タバコのみ可"], { include_blank: "選択してください" }, {class: "form-select"}) %>
+        </div>
+        <div class="form-group mb-3">
+          <%= form.label :支払い方法, class: "form-label" %>
+          <%= form.select("payment", ["現金のみ", "現金・カード可", "現金・カード・QR決済可"], { include_blank: "選択してください" }, {class: "form-select"}) %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :url, class: "form-label" %>
+          <%= form.text_field :url, class: "form-control", placeholder: "ホームページやSNSのアドレス" %>
+        </div>
+        <div class="mb-3">
+          <%= form.label :images, class: "form-label" %>
+          <%= form.file_field :images, multiple: true, class: "form-control" %>
+        </div>
+        <%= form.submit "登録", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
